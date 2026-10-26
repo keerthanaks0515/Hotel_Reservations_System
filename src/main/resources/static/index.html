@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grand Heritage Hotel & Suites | Luxury Stays & Reservations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="/index.html" class="navbar-brand">
+        <i class="fas fa-hotel"></i>
+        <span>Grand Heritage</span>
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="/index.html" class="active">Home</a></li>
+        <li><a href="/rooms.html">Rooms & Suites</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div id="nav-auth-container" class="nav-auth">
+        <!-- Injected dynamically by api.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>An Unrivaled Escape of Pure Elegance</h1>
+      <p>Immerse yourself in world-class hospitality, panoramic skyline vistas, and bespoke culinary dining in the heart of the city.</p>
+      <a href="/rooms.html" class="btn btn-gold btn-lg">Explore Available Rooms</a>
+    </div>
+  </section>
+
+  <!-- Search & Availability Widget -->
+  <div class="container">
+    <div class="search-widget">
+      <form id="home-search-form" class="search-form">
+        <div class="form-group">
+          <label><i class="far fa-calendar-alt"></i> Check-In</label>
+          <input type="date" id="search-checkin" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label><i class="far fa-calendar-check"></i> Check-Out</label>
+          <input type="date" id="search-checkout" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-users"></i> Guests</label>
+          <select id="search-guests" class="form-control">
+            <option value="1">1 Guest</option>
+            <option value="2" selected>2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5+ Guests</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-layer-group"></i> Room Type</label>
+          <select id="search-category" class="form-control">
+            <option value="">All Categories</option>
+          </select>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary" style="height: 48px; width: 100%;">
+            <i class="fas fa-search"></i> Check Availability
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Featured Rooms Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Handcrafted Rooms & Suites</h2>
+        <p>From refined standard retreats to lavish executive penthouses, experience comfort crafted for the discerning traveler.</p>
+      </div>
+      <div id="featured-rooms-container" class="room-grid">
+        <!-- Rendered dynamically by main.js -->
+      </div>
+      <div style="text-align: center; margin-top: 40px;">
+        <a href="/rooms.html" class="btn btn-outline-gold btn-lg">View All Available Accommodations <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Highlight -->
+  <section id="amenities" class="section" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Curated Luxury Amenities</h2>
+        <p>Everything you need for an unforgettable sanctuary stay, curated with exceptional attention to detail.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-card">
+          <i class="fas fa-wifi"></i>
+          <h3>High-Speed Fiber Wi-Fi</h3>
+          <p>Seamless 1Gbps wireless connectivity available throughout all rooms and suites.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-water"></i>
+          <h3>Rooftop Infinity Pool</h3>
+          <p>Heated panoramic swimming pool offering breathtaking 360-degree skyline views.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-utensils"></i>
+          <h3>Artisan Dining & Cafe</h3>
+          <p>Farm-to-table morning breakfasts and evening bespoke cocktail lounges.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-spa"></i>
+          <h3>Holistic Wellness Spa</h3>
+          <p>Signature therapeutic massages, Swedish saunas, and rejuvenating facials.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-concierge-bell"></i>
+          <h3>24/7 Dedicated Concierge</h3>
+          <p>Attentive personal service, city excursions, and airport transfers arranged on demand.</p>
+        </div>
+        <div class="amenity-card">
+          <i class="fas fa-dumbbell"></i>
+          <h3>State-of-the-Art Fitness</h3>
+          <p>Comprehensive gym suite featuring cardio equipment, free weights, and yoga studio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews -->
+  <section id="reviews" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Guest Experiences</h2>
+        <p>Read what our travelers from around the world have to say about their stays with Grand Heritage.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"The reservation process was seamless, and the Executive Suite exceeded all expectations. The terrace view at sunset is truly unforgettable."</p>
+          <div class="review-author">
+            <div class="author-avatar">EM</div>
+            <div>
+              <div class="author-name">Eleanor Martinez</div>
+              <div class="author-date">Stayed September 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Outstanding service! Being able to check availability in real time and receive instant booking confirmation gave us total peace of mind."</p>
+          <div class="review-author">
+            <div class="author-avatar">DL</div>
+            <div>
+              <div class="author-name">David Lawson</div>
+              <div class="author-date">Stayed August 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"The Family Suite comfortably accommodated all 5 of us. Impeccable cleanliness, prompt room service, and stunning architecture."</p>
+          <div class="review-author">
+            <div class="author-avatar">SK</div>
+            <div>
+              <div class="author-name">Sarah Kim</div>
+              <div class="author-date">Stayed July 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer -->
+  <footer id="contact" class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="brand-title" style="color: #ffffff;"><i class="fas fa-hotel" style="color: var(--gold);"></i> Grand Heritage</h3>
+          <p>Exemplary hospitality and refined accommodations. Modern reservations backed by secure, robust Spring Boot architecture.</p>
+          <div style="margin-top: 16px; color: var(--gold);">
+            <p><i class="fas fa-map-marker-alt"></i> 100 Grand Boulevard, Metropolitan City</p>
+            <p><i class="fas fa-phone-alt"></i> +1 (800) 555-4683</p>
+            <p><i class="fas fa-envelope"></i> reservations@grandheritage.com</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/rooms.html">Rooms & Suites</a></li>
+            <li><a href="/my-bookings.html">My Bookings</a></li>
+            <li><a href="/admin.html">Administrator Portal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Accommodations</h3>
+          <ul class="footer-links">
+            <li><a href="/rooms.html">Standard Rooms</a></li>
+            <li><a href="/rooms.html">Deluxe Chambers</a></li>
+            <li><a href="/rooms.html">Executive Suites</a></li>
+            <li><a href="/rooms.html">Family Sanctuaries</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Simulation Notice</h3>
+          <p style="font-size: 0.85rem; color: #94a3b8;">
+            This software is built for demonstration and portfolio purposes. All financial transactions and payment card processes are simulated with zero actual charges.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 Grand Heritage Hotel Reservation System. All rights reserved.</div>
+        <div>Built with Spring Boot 3, Spring Security, MySQL & Vanilla JS</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

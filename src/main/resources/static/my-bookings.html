@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Reservations | Grand Heritage Hotel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .filter-tab {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .filter-tab.active, .filter-tab:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+    @media (max-width: 768px) {
+      .booking-item-card {
+        grid-template-columns: 1fr !important;
+        text-align: left !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="/index.html" class="navbar-brand">
+        <i class="fas fa-hotel"></i>
+        <span>Grand Heritage</span>
+      </a>
+      <ul class="navbar-nav">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/rooms.html">Rooms & Suites</a></li>
+        <li><a href="/my-bookings.html" class="active">My Bookings</a></li>
+      </ul>
+      <div id="nav-auth-container" class="nav-auth"></div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <div style="background: var(--primary); color: #ffffff; padding: 40px 0; text-align: center;">
+    <div class="container">
+      <h1 style="color: #ffffff; font-size: 2.3rem; margin-bottom: 8px;">My Hotel Reservations</h1>
+      <p style="color: #94a3b8; font-size: 1rem;">Track your upcoming stays, view official reservation vouchers, and manage eligible cancellations.</p>
+    </div>
+  </div>
+
+  <main class="section">
+    <div class="container">
+      <!-- Tabs -->
+      <div style="display: flex; gap: 12px; margin-bottom: 28px; flex-wrap: wrap;">
+        <button class="filter-tab active" data-status="ALL">All Reservations</button>
+        <button class="filter-tab" data-status="UPCOMING">Upcoming & Confirmed</button>
+        <button class="filter-tab" data-status="COMPLETED">Completed Stays</button>
+        <button class="filter-tab" data-status="CANCELLED">Cancelled</button>
+      </div>
+
+      <!-- Bookings List -->
+      <div id="bookings-container">
+        <!-- Rendered dynamically by my-bookings.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Cancellation Modal -->
+  <div id="cancel-confirm-modal" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Confirm Reservation Cancellation</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: var(--danger-bg); border-left: 4px solid var(--danger); padding: 12px 16px; border-radius: var(--radius-sm); margin-bottom: 16px; color: #991b1b; font-size: 0.9rem;">
+          <strong>Warning:</strong> You are about to cancel booking reference: <strong id="cancel-modal-ref"></strong>.
+        </div>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 14px;">
+          Per hotel cancellation policy, free cancellation is permitted up to 24 hours prior to the scheduled check-in date. Any simulated payment will be marked for simulated refund.
+        </p>
+        <div class="form-group">
+          <label>Reason for Cancellation (Optional)</label>
+          <input type="text" id="cancellation-reason" class="form-control" placeholder="e.g. Schedule adjustment, family emergency...">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline modal-close">Keep Booking</button>
+        <button type="button" id="confirm-cancel-btn" class="btn btn-danger">Confirm Cancellation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Voucher Details Modal -->
+  <div id="voucher-modal" class="modal-overlay">
+    <div class="modal-dialog" style="max-width: 640px;">
+      <div class="modal-header">
+        <h3>Reservation Voucher</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div id="voucher-modal-content" class="modal-body">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <div>&copy; 2026 Grand Heritage Hotel Reservation System.</div>
+        <div>Simulated Environment for Demonstration & Portfolio.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/my-bookings.js"></script>
+</body>
+</html>

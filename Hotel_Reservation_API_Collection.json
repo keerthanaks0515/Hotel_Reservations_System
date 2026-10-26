@@ -1,0 +1,239 @@
+{
+  "info": {
+    "name": "CodeAlpha Hotel Reservation & Management System API",
+    "description": "Comprehensive REST API Collection for Customer and Administrator Hotel Operations",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api"
+    },
+    {
+      "key": "authToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register Customer",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/auth/register", "host": ["{{baseUrl}}"], "path": ["auth", "register"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Smith\",\n  \"email\": \"jane.smith@example.com\",\n  \"password\": \"SecurePass@123\",\n  \"phone\": \"+1-555-0188\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login (Customer Demo)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"Customer@123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login (Admin Demo)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": { "raw": "{{baseUrl}}/auth/login", "host": ["{{baseUrl}}"], "path": ["auth", "login"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@hotel.com\",\n  \"password\": \"Admin@123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Current Profile",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/auth/me", "host": ["{{baseUrl}}"], "path": ["auth", "me"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rooms & Search",
+      "item": [
+        {
+          "name": "Search Available Rooms",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/rooms/search?checkInDate=2026-11-01&checkOutDate=2026-11-04&guests=2",
+              "host": ["{{baseUrl}}"],
+              "path": ["rooms", "search"],
+              "query": [
+                { "key": "checkInDate", "value": "2026-11-01" },
+                { "key": "checkOutDate", "value": "2026-11-04" },
+                { "key": "guests", "value": "2" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Room by ID",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/rooms/1", "host": ["{{baseUrl}}"], "path": ["rooms", "1"] }
+          }
+        },
+        {
+          "name": "Get Featured Rooms",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/rooms/featured", "host": ["{{baseUrl}}"], "path": ["rooms", "featured"] }
+          }
+        },
+        {
+          "name": "Get Room Categories",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/categories", "host": ["{{baseUrl}}"], "path": ["categories"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservations",
+      "item": [
+        {
+          "name": "Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/reservations", "host": ["{{baseUrl}}"], "path": ["reservations"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomId\": 1,\n  \"checkInDate\": \"2026-11-10\",\n  \"checkOutDate\": \"2026-11-13\",\n  \"numberOfGuests\": 2,\n  \"guestName\": \"John Doe\",\n  \"guestEmail\": \"john@example.com\",\n  \"guestPhone\": \"+1-555-0142\",\n  \"specialRequests\": \"High floor requested\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get My Reservations",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/reservations/my", "host": ["{{baseUrl}}"], "path": ["reservations", "my"] }
+          }
+        },
+        {
+          "name": "Lookup Reservation by Reference",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/reservations/lookup/BK-DEMO-701A", "host": ["{{baseUrl}}"], "path": ["reservations", "lookup", "BK-DEMO-701A"] }
+          }
+        },
+        {
+          "name": "Cancel Reservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/reservations/1/cancel", "host": ["{{baseUrl}}"], "path": ["reservations", "1", "cancel"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"Change of itinerary\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments (Simulated)",
+      "item": [
+        {
+          "name": "Simulate Payment (Success)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/payments/simulate", "host": ["{{baseUrl}}"], "path": ["payments", "simulate"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookingReference\": \"BK-DEMO-701A\",\n  \"paymentMethod\": \"SIMULATED_CARD\",\n  \"simulateSuccess\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Simulate Payment (Failure Test)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/payments/simulate", "host": ["{{baseUrl}}"], "path": ["payments", "simulate"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bookingReference\": \"BK-DEMO-701A\",\n  \"paymentMethod\": \"SIMULATED_CARD\",\n  \"simulateSuccess\": false\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Management",
+      "item": [
+        {
+          "name": "Get Dashboard Statistics",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/dashboard/stats", "host": ["{{baseUrl}}"], "path": ["admin", "dashboard", "stats"] }
+          }
+        },
+        {
+          "name": "Get All Rooms (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/rooms", "host": ["{{baseUrl}}"], "path": ["admin", "rooms"] }
+          }
+        },
+        {
+          "name": "Create Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{authToken}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/admin/rooms", "host": ["{{baseUrl}}"], "path": ["admin", "rooms"] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"roomNumber\": \"501\",\n  \"categoryId\": 3,\n  \"pricePerNight\": 249.00,\n  \"maxOccupancy\": 3,\n  \"active\": true,\n  \"description\": \"Penthouse luxury suite\",\n  \"imageUrl\": \"https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80\",\n  \"amenityIds\": [1, 2, 3, 4, 7]\n}"
+            }
+          }
+        },
+        {
+          "name": "Export Reservations as CSV",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{authToken}}" }],
+            "url": { "raw": "{{baseUrl}}/admin/reports/reservations/export-csv", "host": ["{{baseUrl}}"], "path": ["admin", "reports", "reservations", "export-csv"] }
+          }
+        }
+      ]
+    }
+  ]
+}
